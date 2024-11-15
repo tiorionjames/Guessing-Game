@@ -1,93 +1,198 @@
-# unit-5-js-foundation-guessing-game-lab
+**Keywords**
+ - Basic Data Types
+ - Conditionals
+ - Loops
+ - Arrays
+ - Objects
+ - Chrome `debugger` keyword
+ - VS Code
+ - Terminal
+ - Files / Folder Navigation
+ - Git & Github
+
+**Note:** The information provided here is for your convenience. Please follow a long in class and refer to the in-class discussion for what you should be doing.
+
+**Getting started:**
+
+Included in this repo are the following files:
+ - `app.js` - This is where you will write all of your code
+ - `index.html` - You will run this HTML file in your browser to run your code
+ - `style.css` - Ignore for this project. This is to style the page, but your app will not be interacting directly with the webpage. 
+ - `readme.md` - That is what you are reading right now. The file is in markdown format (.md), it's straight forward way to organize text content that Github understands. You don't need to know much more than that about it right now. 
 
 
+# Project: Guessing Game
 
-## Getting started
+Create a guessing game that allows users to guess a secret number. You will need to use the built in “prompt()” function to capture the user input when the program is running. Once you have the user’s input, you can compare it with your secret number and use the built in “alert()” function to send back the appropriate message.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+The functions alert and prompt are built into the web browser. And since our javascript code runs in the web browser, we can use them.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Alert: https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
 
-## Add your files
+Prompt: https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+(Please read the documentation on prompt, make sure you understand what result is and the parameters)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+-------------------------------------------------
 
-```
-cd existing_repo
-git remote add origin https://gitlab.galvanize.com/galvanize-it/curricula/consumer/sjp_2.0/sjp-2-public-resources/unit-5-js-foundation-guessing-game-lab.git
-git branch -M main
-git push -uf origin main
-```
+### Features Checklist:
+-[] Guess Once
+-[] Guess Again
+-[] How Many Tries?
+-[] History in the Making
+-[] Guess Who?
+-[] Play It Again!
+-[] Guess Star.
 
-## Integrate with your tools
+-------------------------------------------------
 
-- [ ] [Set up project integrations](https://gitlab.galvanize.com/galvanize-it/curricula/consumer/sjp_2.0/sjp-2-public-resources/unit-5-js-foundation-guessing-game-lab/-/settings/integrations)
+### Feature 1: Guess once.
+Using alert and prompt, write a program that asks the user to guess a number and then tells them if they were correct, or if they should have guessed higher or lower.
 
-## Collaborate with your team
+*Main Function*
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+**Inputs:**
 
-## Test and Deploy
+(Number) Guess
 
-Use the built-in continuous integration in GitLab.
+**Example Output:** 
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+(String) “Higher”, if Guess is lower than the secret number
 
-***
+Or
 
-# Editing this README
+(String) “Lower”, if Guess is higher than the secret number
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Or
 
-## Suggestions for a good README
+(String) “Correct!” , if Guess is equal to the secret number
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+-------------------------------------------------
 
-## Name
-Choose a self-explaining name for your project.
+### Feature 2: Guess again!
+If the guess is higher or lower, ask the user to guess again. Your program should keep doing this until the guess is the same as the secret number. 
+Check Your Work! Test out your code, make sure everything is working correctly. Also make sure you don’t see any errors in console.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Stuck? Try these exercises to get your brain going:
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Before trying to solve a problem, do you understand what the problem is?
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Write out what you are trying to accomplish in your own words
+ - Now break it down into smaller steps. 
+ - E.g. What would half done look like?
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+List out what things MIGHT work
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Is this problem different from anything you’ve seen before? 
+ - What makes it so different? 
+  - What does that mean you need to research / google?
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Is there anything familiar in the problem? 
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Super Stuck? If you are still stuck on how to do this, share what you have done above and you can ask for a hint, or hang on for the class solution. 
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+Done early? Look for opportunities to refactor (we will cover refactoring later).
+By far the most important skill to start working on right now: If someone were to read your code, would it be easy for them to read and understand without having you explain it?
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Other things you can do:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Does your code seem repetitive? Use more functions
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Name those functions appropriately.
 
-## License
-For open source projects, say how it is licensed.
+If your functions are more than 5 lines or so, split it into smaller functions.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+-------------------------------------------------
+
+### Feature 3: How many tries?
+Once the user guesses the correct answer, let’s add a feature that tells them how many guesses it took them until they made the correct guess.
+
+*Main Function*
+
+**Inputs:**
+
+(Number) Guess
+
+**Example Output:** 
+
+“
+
+“
+
+(String) “Correct! It only took you 5 guesses!” , if Guess is equal to the secret number
+
+
+-------------------------------------------------
+
+### Feature 4: History in the making
+Let’s update the last feature so that instead of just the number of guesses, we let the user know all of their previous guesses before they got the right answer. 
+
+*Main Function*
+
+**Inputs:**
+
+(Number) Guess
+
+**Example Output:** 
+
+“
+
+“
+
+(String) “Correct! Your previous guesses we’re 100, 30, 50, 55!” , if Guess is equal to the secret number
+
+-------------------------------------------------
+
+### Feature 5: Guess who?
+Let’s add a feature that takes in the user’s name at the start of the game so we can make the messages more personalized.
+
+*Main Function*
+
+**Inputs:**
+
+(String) Name
+
+(Number) Guess
+
+**Example Output:** 
+
+(String) “Sorry Alice, Guess Higher”, if Guess is lower than the secret number
+
+Or
+
+(String) “Sorry Alice, Guess Lower”, if Guess is higher than the secret number
+
+Or
+
+(String) “That’s Correct Alice! Your previous guesses we’re 100, 30, 50, 55!” , if Guess is equal to the secret number
+
+-------------------------------------------------
+
+### Feature 6: Play again
+Let’s add a feature that asks the user if they want to play again once they’ve made a correct guess.
+
+Play Again Function
+
+**Inputs:**
+
+(String) “Yes”, Run main game function
+
+(String) “No”, do nothing
+
+-------------------------------------------------
+
+### Feature 7: Guess Star
+Let’s add a feature that records the number of guesses for each unique name that is entered when the game is started. If someone with the same name played before, then when they get a correct answer, it tells them if they beat their previous attempt (less guesses is better). 
+
+*Main Function*
+
+**Inputs:**
+
+(String) Name
+
+(Number) Guess
+
+**Example Output:**
+
+(String) “That’s Correct Bob! And you beat your previous attempt by 3 fewer guesses!” , if Guess is equal to the secret number and “Bob” played before with more guesses.
+
+(String) “That’s Correct Alice! You did better in your last game by 3 fewer guesses.” , if Guess is equal to the secret number and Alice played before with less guesses.
