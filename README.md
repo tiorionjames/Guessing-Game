@@ -11,7 +11,7 @@
  - Git & GitLab
 
 **Note:** The information provided here is for your convenience. Please follow along in class and refer to the in-class discussion for what you should be doing.
-p
+
 **Getting started:**
 
 Included in this repo are the following files:
