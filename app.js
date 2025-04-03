@@ -1,78 +1,93 @@
-function randomInt(n) {
-    return Math.floor(Math.random() * n) + 1;
-}
+let leaderboard = [];
 
+function startGame() {
+    let playerCount = prompt("How many players are playing?");
+    let players = [];
+    let playerGuesses = {};
+    let unlimitedGuesses = false; // Default to limited guesses
 
-const highScores = {};
-
-function play() {
-    let numberToGuess;
-    let setNumber = prompt("Do you want to set a secret number? Yes or no").toLowerCase();
-        if (setNumber == "no") {
-            numberToGuess = randomInt(100);
-        } else {numberToGuess = parseInt(prompt("Enter your secret number."))}
-            console.log(`Hello World! Let's make a guessing game! Here's a number to guess: ${numberToGuess}`);
-
-    let username = prompt("What is your name?");
-
-    if (!username) {
-        alert("Please enter a valid name to play.");
-        return play();
+    // Ask if the player wants unlimited guesses or 4 guesses
+    let guessMode = prompt("Do you want to play with unlimited guesses? (yes/no)").toLowerCase();
+    if (guessMode === "yes") {
+        unlimitedGuesses = true;
     }
 
-    let limit;
-    let setLimit = prompt("Do you want to set the guess limit to 4? Yes or no").toLowerCase();
-        if (setLimit== "no") {
-            limit = Infinity;
-        } else {limit = 4}
-            console.log(`limit is ${limit}`)
+    // Function to generate a random number between 1 and 100
+    function getRandomNumber() {
+        return Math.floor(Math.random() * 100) + 1;
+    }
 
-    let guess = parseInt(prompt("Guess a number between 1 and 100!"));
-    let count = 1;
-    const maxCount = limit
-    let previousGuesses = [];
-
-    while (guess !== numberToGuess) {
-        if (isNaN(guess) || guess < 1 || guess > 100) {
-            alert("Invalid input! Please enter a number between 1 and 100.");
+    // Ask each player for their name and set their secret number
+    for (let i = 0; i < playerCount; i++) {
+        let playerName = prompt("Player " + (i + 1) + ", enter your name:");
+        let secretNumber = prompt(playerName + ", set your secret number (or leave empty for a random number between 1 and 100):");
+        if (secretNumber === "") {
+            secretNumber = getRandomNumber();
         } else {
-            previousGuesses.push(guess);
+            secretNumber = parseInt(secretNumber);
+        }
 
-            if (guess < numberToGuess) {
-                alert(`Sorry ${username}, guess higher!`);
+        players.push({ name: playerName, secretNumber: secretNumber });
+        playerGuesses[playerName] = [];
+    }
+
+    // Function to track guesses and provide feedback
+    function guessNumber(player) {
+        let guesses = 0;
+        let guess;
+        while (unlimitedGuesses || guesses < 4) {  // Unlimited guesses or 4 guess limit
+            guess = parseInt(prompt(player.name + ", guess the number:"));
+            playerGuesses[player.name].push(guess);
+            guesses++;
+
+            if (guess === player.secretNumber) {
+                alert(player.name + ", you guessed the number correctly in " + guesses + " guesses!");
+                // Record the result in the leaderboard
+                leaderboard.push({ name: player.name, guesses: guesses });
+                break;
+            } else if (guess < player.secretNumber) {
+                alert("Your guess is too low! Try again.");
             } else {
-                alert(`Sorry ${username}, guess lower!`);
+                alert("Your guess is too high! Try again.");
+            }
+
+            if (!unlimitedGuesses && guesses === 4) {
+                alert(player.name + ", you have used all your guesses. The correct number was: " + player.secretNumber);
+                // Even if they didn't win, record their result in the leaderboard
+                leaderboard.push({ name: player.name, guesses: guesses });
+                break;
             }
         }
-
-        guess = parseInt(prompt("Guess again:"));
-        count++;
-
-        if (count == maxCount) {
-            alert("4 guess limit reached")
-            break;
-        }
     }
 
-    if (guess == numberToGuess) {
-        alert(`That's correct, ${username}! It took you ${count} guesses. Your previous guesses were: ${previousGuesses.join(", ")}.`);
-        if (!(username in highScores) || count < highScores[username]) {
-            highScores[username] = count;
-            alert(`${username}, you've set a new high score with ${count} guesses!`);
-        } else {
-            alert(`${username}, your best score remains ${highScores[username]} guesses.`);
-        }
+    // Game loop for each player
+    for (let i = 0; i < players.length; i++) {
+        guessNumber(players[i]);
     }
 
-    console.log("Current High Scores:", highScores);
+    // Display leaderboard after the game
+    function displayLeaderboard() {
+        if (leaderboard.length === 0) {
+            alert("No leaderboard results yet.");
+            return;
+        }
 
-    let again = prompt("Do you want to play again? Yes or No").toLowerCase();
+        let leaderboardString = "Leaderboard: \n";
+        leaderboard.sort((a, b) => a.guesses - b.guesses);
+        leaderboard.forEach(player => {
+            leaderboardString += player.name + ": " + player.guesses + " guesses\n";
+        });
+        alert(leaderboardString);
+    }
 
-    if (again === "yes") {
-        play();
+    // Ask if they want to play again (yes/no prompt)
+    let playAgain = prompt("Do you want to play again? (yes/no)").toLowerCase();
+    if (playAgain === "yes") {
+        leaderboard = []; // Reset leaderboard for the new game
+        startGame(); // Restart the game if the user wants to play again
     } else {
-        alert("Thanks for playing!");
+        displayLeaderboard(); // Show the leaderboard at the end of the game
     }
 }
 
-play();
+startGame();
